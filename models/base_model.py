@@ -4,7 +4,7 @@
 import models
 import uuid
 from datetime import datetime
-#from models.__init__ import storage
+
 class BaseModel:
 
     """Defines all common attributes/methods for other classes"""
