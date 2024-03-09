@@ -38,15 +38,12 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     obj = globals()[class_name].from_dict(obj_data)
 
-                    # Check if an object with the same ID already exists
                     existing_obj = next((o for o in self.__objects.values() if o.id == obj.id), None)
 
                     if existing_obj:
-                        # Update existing object's attributes
                         existing_obj.updated_at = obj.updated_at
-                        # Add more attributes to update as needed
+
                     else:
-                        # Add the new object to __objects
                         self.__objects[key] = obj
 
         except FileNotFoundError:
