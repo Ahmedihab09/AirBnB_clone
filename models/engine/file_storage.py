@@ -24,7 +24,7 @@ class FileStorage:
             json.dump(data, file)
 
     def reload(self):
-        """Deserialization the JSON file to __objects"""
+        """Deserialization the JSON file to __objects method"""
         try:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
@@ -32,6 +32,7 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     obj = globals()[class_name].from_dict(obj_data)
                     self.__objects[key] = obj
+
         except FileNotFoundError:
             pass
 
