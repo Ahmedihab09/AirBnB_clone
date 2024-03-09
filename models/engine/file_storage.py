@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""Define FileStorage class"""
+
 import json
 
 class FileStorage:
