@@ -29,7 +29,7 @@ class FileStorage:
             json.dump(data, file)
 
     def reload(self):
-        """Deserialization the JSON file to __objects """
+        """Deserialization the JSON file to __objects"""
         try:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
