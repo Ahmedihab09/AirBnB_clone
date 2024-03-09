@@ -36,12 +36,14 @@ class FileStorage:
                     class_name, obj_id = key.split('.')
                     obj = globals()[class_name].from_dict(obj_data)
 
-                    existing_obj = FileStorage.__objects.get(key)
+                    existing_obj = next((o for o in FileStorage.__objects.values() if o.id == obj.id), None)
 
                     if existing_obj:
                         existing_obj.updated_at = obj.updated_at
+
                     else:
                         FileStorage.__objects[key] = obj
 
         except FileNotFoundError:
             pass
+
