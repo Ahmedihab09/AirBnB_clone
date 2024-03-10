@@ -3,6 +3,7 @@
 
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 class FileStorage:
     """Serializes instances to a JSON file and
@@ -34,7 +35,10 @@ class FileStorage:
 
                 for key, obj_data in data.items():
                     class_name, obj_id = key.split('.')
-                    obj = globals()[class_name].from_dict(obj_data)
+                    if class_name == "User":
+                        obj = User(**obj_data)
+                    else:
+                        obj = globals()[class_name].from_dict(obj_data)
 
                     existing_obj = next((o for o in FileStorage.__objects.values() if o.id == obj.id), None)
 
