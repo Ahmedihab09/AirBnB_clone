@@ -40,20 +40,16 @@ class FileStorage:
 
                 for key, obj_data in data.items():
                     class_name, obj_id = key.split('.')
-                    if class_name == "User":
-                        obj = User(**obj_data)
-                    else:
-                        obj = globals()[class_name].from_dict(obj_data)
+                    if class_name in globals():
+                        cls = globals()[class_name]
+                        obj = cls(**obj_data)
+                        existing_obj = FileStorage.__objects.get(key)
 
-                    existing_obj = next((o for o in FileStorage.__objects.values() if o.id == obj.id), None)
-
-                    if existing_obj:
-                        existing_obj.updated_at = obj.updated_at
-
-                    else:
-                        FileStorage.__objects[key] = obj
+                        if existing_obj:
+                            existing_obj.updated_at = obj.updated_at
+                        else:
+                            FileStorage.__objects[key] = obj
 
         except FileNotFoundError:
             pass
-
 
