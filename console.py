@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 """Entry point of the command interpreter"""
 
 import cmd
@@ -12,7 +14,8 @@ from models.state import State
 from models.user import User
 from models import storage
 class HBNBCommand(cmd.Cmd):
-    """Defines the Command Interpreter."""
+    """Defines the Command
+     Interpreter."""
 
     prompt = "(hbnb)"
     classes = ["Amenity", "BaseModel", "City", "Place", "Review", "State", "User"]
@@ -90,7 +93,8 @@ class HBNBCommand(cmd.Cmd):
             storage.save()
 
     def do_all(self, arg):
-        """Prints all string representation of all instances
+        """Prints all string representation
+        of all instances
         based or not on the class name"""
         a = arg.split()
         self._print_instances(a[0] if a and a[0] in HBNBCommand.classes else None)

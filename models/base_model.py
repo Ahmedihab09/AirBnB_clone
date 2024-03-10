@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 """Define the base model class."""
 
 import models
@@ -9,12 +11,13 @@ class BaseModel:
 
     """Defines all common attributes/methods for other classes"""
 
-
     def __init__(self, *args, **kwargs):
-        """Initialization of the base model with *args and **kwargs support"""
+        """Initialization of the base model
+        with *args and **kwargs support"""
         if kwargs:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
+                if (key == 'created_at' or
+                        key == 'updated_at'):
                     setattr(self, key, datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
                 elif key != '__class__':
                     setattr(self, key, value)
