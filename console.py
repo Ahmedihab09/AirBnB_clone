@@ -3,15 +3,13 @@
 
 import cmd
 from models import storage
-import models
 from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     """Defines the Command Interpreter."""
 
     prompt = "(hbnb)"
-    classes = ["Amenity", "BaseModel", "City",
-               "Place", "Review", "State", "User"]
+    classes = ["Amenity", "BaseModel", "City", "Place", "Review", "State", "User"]
 
     def do_EOF(self, arg):
         """ EOF command to exit the program"""
@@ -22,18 +20,38 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def emptyline(self):
-        """ Empty line - Not Excute anything"""
+        """ Empty line - Not execute anything"""
         pass
+
+    def _get_class_instance(self, class_name):
+        """Get an instance of a class based on its name"""
+        class_to_create = globals().get(class_name)
+        if class_to_create:
+            return class_to_create()
+        print(f"Class '{class_name}' not found in globals()")
+        return None
+
+    def _print_instances(self, class_name):
+        """Print instances based on the class name"""
+        instances = storage.all()
+        if not class_name or class_name in HBNBCommand.classes:
+            print([str(inst) for inst in instances.values()])
+        elif class_name not in HBNBCommand.classes:
+            print("** class doesn't exist **")
 
     def do_create(self, arg):
         """ Creates a new instance of BaseModel"""
         if not arg:
             print("** class name missing **")
+            return
         elif arg not in HBNBCommand.classes:
             print("** class doesn't exist **")
-        else:
-            print(eval(arg)().id)
-            storage.save()
+            return
+
+        new_instance = self._get_class_instance(arg)
+        if new_instance:
+            new_instance.save()
+            print(new_instance.id)
 
     def do_show(self, arg):
         """ Prints the string representation of an instance
@@ -69,14 +87,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
         based or not on the class name"""
         a = arg.split()
-        if arg and a[0] not in HBNBCommand.classes:
-            print("** class doesn't exist **")
-        else:
-            li = []
-            for v in storage.all().values():
-                if not arg or a[0] == v.__class__.__name__:
-                    li.append(str(v))
-            print(li)
+        self._print_instances(a[0] if a and a[0] in HBNBCommand.classes else None)
 
     def do_count(self, arg):
         """retrieve the number of instances of a class"""
