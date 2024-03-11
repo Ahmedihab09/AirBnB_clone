@@ -3,6 +3,7 @@
 '''Test place class'''
 import unittest
 from models.place import Place
+from tests.test_models import test_base_model
 
 class TestPlace(unittest.TestCase):
     def test_default_attributes(self):
