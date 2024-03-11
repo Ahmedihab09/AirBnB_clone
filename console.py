@@ -14,6 +14,7 @@ from models.state import State
 from models.user import User
 from models import storage
 
+
 class HBNBCommand(cmd.Cmd):
 
 
@@ -104,7 +105,10 @@ class HBNBCommand(cmd.Cmd):
         self._print_instances(a[0] if a and a[0] in HBNBCommand.classes else None)
 
     def do_count(self, arg):
+
+
         """retrieve the number of instances of a class"""
+
         count = 0
         a = arg.split()
         for v in storage.all().values():
