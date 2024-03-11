@@ -14,11 +14,18 @@ from models.state import State
 from models.user import User
 from models import storage
 class HBNBCommand(cmd.Cmd):
-    """Defines the Command
-     Interpreter."""
+    """Defines the Command Interpreter."""
 
     prompt = "(hbnb)"
-    classes = ["Amenity", "BaseModel", "City", "Place", "Review", "State", "User"]
+    classes = [
+        "Amenity",
+        "BaseModel",
+        "City",
+        "Place",
+        "Review",
+        "State",
+        "User"
+    ]
 
     def do_EOF(self, arg):
         """ EOF command to exit the program"""
