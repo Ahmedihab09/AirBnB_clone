@@ -7,7 +7,7 @@ Class to test the User class.
 import unittest
 from models.user import User
 from datetime import datetime
-
+from tests.test_models import test_base_model
 
 class TestUser(unittest.TestCase):
     """Test cases for the User class."""
