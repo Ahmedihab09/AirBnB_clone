@@ -16,7 +16,6 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
 
-
     """Defines the Command Interpreter."""
 
     prompt = "(hbnb)"
@@ -120,7 +119,6 @@ class HBNBCommand(cmd.Cmd):
             if a[0] == v.__class__.__name__:
                 count += 1
         print(count)
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
