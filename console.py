@@ -113,10 +113,7 @@ class HBNBCommand(cmd.Cmd):
             )
 
     def do_count(self, arg):
-
-
         """retrieve the number of instances of a class"""
-
         count = 0
         a = arg.split()
         for v in storage.all().values():
@@ -125,4 +122,6 @@ class HBNBCommand(cmd.Cmd):
         print(count)
 
 if __name__ == '__main__':
+
+
     HBNBCommand().cmdloop()
