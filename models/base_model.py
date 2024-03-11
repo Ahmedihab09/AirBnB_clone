@@ -31,7 +31,10 @@ class BaseModel:
 
     def __str__(self):
         """String representation of the BaseModel instance"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__,
+            self.id, self.__dict__
+            )
 
     def save(self):
         """
@@ -40,7 +43,6 @@ class BaseModel:
         """
         self.updated_at = datetime.now()
         models.storage.save()
-
 
     def to_dict(self):
         """
@@ -58,8 +60,12 @@ class BaseModel:
         """Recreates an instance from a dictionary representation"""
         instance = cls()
         instance.id = obj_dict.get('id', str(uuid.uuid4()))
-        instance.created_at = datetime.fromisoformat(obj_dict.get("created_at"))
-        instance.updated_at = datetime.fromisoformat(obj_dict.get("updated_at"))
+        instance.created_at = datetime.fromisoformat(
+            obj_dict.get("created_at")
+            )
+        instance.updated_at = datetime.fromisoformat(
+            obj_dict.get("updated_at")
+            )
 
         for key, value in obj_dict.items():
             if key not in ('id', 'created_at', 'updated_at', '__class__'):
