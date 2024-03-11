@@ -3,6 +3,7 @@
 '''Tesy review class'''
 import unittest
 from models.review import Review
+from tests.test_models import test_base_model
 
 class TestReview(unittest.TestCase):
     def test_default_attributes(self):
