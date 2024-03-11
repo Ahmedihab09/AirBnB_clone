@@ -5,6 +5,7 @@
     Define the base model class.
 
 """
+
 import models
 import uuid
 from datetime import datetime
