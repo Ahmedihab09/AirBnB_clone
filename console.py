@@ -121,6 +121,7 @@ class HBNBCommand(cmd.Cmd):
                 count += 1
         print(count)
 
+
 if __name__ == '__main__':
 
 
