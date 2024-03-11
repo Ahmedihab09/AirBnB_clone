@@ -14,7 +14,6 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
     """Defines the Command Interpreter."""
-
     prompt = "(hbnb)"
     classes = [
         "Amenity",
