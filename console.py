@@ -103,7 +103,9 @@ class HBNBCommand(cmd.Cmd):
         of all instances
         based or not on the class name"""
         a = arg.split()
-        self._print_instances(a[0] if a and a[0] in HBNBCommand.classes else None)
+        self._print_instances(
+            a[0] if a and a[0] in HBNBCommand.classes else None
+        )
 
     def do_count(self, arg):
         """retrieve the number of instances of a class"""
