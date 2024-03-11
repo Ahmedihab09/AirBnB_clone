@@ -1,16 +1,15 @@
 #!/usr/bin/python3
-
-
-"""Define the base model class."""
-
+"""
+    Define the base model class.
+"""
 import models
 import uuid
 from datetime import datetime
 
 class BaseModel:
-
-    """Defines all common attributes/methods for other classes"""
-
+    """
+        Defines all common attributes/methods for other classes
+    """
     def __init__(self, *args, **kwargs):
         """Initialization of the base model
         with *args and **kwargs support"""
@@ -37,7 +36,9 @@ class BaseModel:
 
 
     def to_dict(self):
-        """Returns a dictionary containing all keys/values of __dict__ of the instance"""
+        """
+            Returns a dictionary containing all keys/values of __dict__ of the instance
+        """
         dict_rep = self.__dict__.copy()
         dict_rep["__class__"] = self.__class__.__name__
         dict_rep["created_at"] = self.created_at.isoformat()
