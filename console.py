@@ -17,12 +17,18 @@ from models import storage
 
 class HBNBCommand(cmd.Cmd):
 
-
-    """Defines the Command
-     Interpreter."""
+    """Defines the Command Interpreter."""
 
     prompt = "(hbnb)"
-    classes = ["Amenity", "BaseModel", "City", "Place", "Review", "State", "User"]
+    classes = [
+        "Amenity",
+        "BaseModel",
+        "City",
+        "Place",
+        "Review",
+        "State",
+        "User"
+        ]
 
     def do_EOF(self, arg):
         """ EOF command to exit the program"""
@@ -102,7 +108,9 @@ class HBNBCommand(cmd.Cmd):
         of all instances
         based or not on the class name"""
         a = arg.split()
-        self._print_instances(a[0] if a and a[0] in HBNBCommand.classes else None)
+        self._print_instances(
+            a[0] if a and a[0] in HBNBCommand.classes else None
+            )
 
     def do_count(self, arg):
 
@@ -115,7 +123,6 @@ class HBNBCommand(cmd.Cmd):
             if a[0] == v.__class__.__name__:
                 count += 1
         print(count)
-
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
