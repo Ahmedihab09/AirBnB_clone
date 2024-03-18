@@ -1,4 +1,10 @@
 /* styles/3-footer.css */
 footer {
-    background-color: #484848;
+    background-color: #FFFF;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
